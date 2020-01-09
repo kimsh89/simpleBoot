@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.simple.dao.PersonDAO">
+	<select id="personList" parameterType="hashmap" resultType="java.util.HashMap">
+		select * from Person
+		where 1=1
+		<if test="searchName !=null and  searchName neq ''">
+		 and Name like '%'||#{searchName}||'%'
+		</if>
+	</select>
+</mapper>

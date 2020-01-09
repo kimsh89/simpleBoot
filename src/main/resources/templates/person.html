@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Person</title>
+</head>
+<script type="text/javascript">
+	function fnc_sumbit(){
+		document.forms[0].submit();
+	}
+</script>
+<body>
+
+	<form method="post" action="/person">
+	<p>
+		<label for="searchName">이름</label><input type="text" name="searchName" th:value="${searchName}"/>
+		<input type="button" value="전송" onclick="fnc_sumbit()"/>
+	</p>
+	</form>
+	<table>
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">번호</th>
+				<th scope="col">이름</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="item, stat : ${list}">
+				<td scope="row" th:text="${stat.count}"></td>
+				<td th:text="${item.Name}"></td>
+			</tr>
+		</tbody>
+	</table>
+	
+</body>
+</html>
